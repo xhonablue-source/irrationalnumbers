@@ -29,7 +29,38 @@ Example: `log₁₀(3) ≈ 0.477121...`
 
 ### 🍰 Funny Analogy:
 Imagine slicing a birthday cake exactly at `log₁₀(3)`. No matter how you try, you'll never cut a clean piece—it's always just off! That's what irrational numbers are like in the real world.
+
+### 📜 The True History of "Logarithm" - Giving Credit Where Due
+The word **"logarithm"** has a complex origin story that reveals both mathematical genius and the importance of acknowledging all contributors!
+
+**Etymology Breakdown:**
+- **"Logos"** (Greek) = word, ratio, reason
+- **"Arithmos"** (Greek) = number
+- **"Logarithm"** = literally "ratio number" or "the number of the ratio"
+
+**The Real Historical Context:**
+While Scottish mathematician **John Napier** coined the term "logarithm" in 1614 with his publication *Mirifici logarithmorum canonis descriptio*, the foundational concepts came from much earlier work:
+
+**The True Foundation:**
+- **Al-Kashi** (15th century Persian mathematician) developed sophisticated calculation methods using what we now recognize as logarithmic principles, creating detailed tables for exponential relationships
+- **African scholars in Timbuktu** at Sankore University (13th-16th centuries) were performing complex calculations with exponential relationships centuries before European "discovery"
+
+**What Napier Actually Did:**
+Rather than inventing the concept, Napier:
+1. **Systematized** existing knowledge from Arabic and African mathematical traditions
+2. **Created the terminology** ("logarithm") and notation we use today
+3. **Published comprehensive tables** that made the methods widely accessible in Europe
+4. **Built upon centuries** of Islamic Golden Age mathematics
+
+**Why This Matters:**
+Understanding the true history shows us that mathematical knowledge is **global and collaborative**. Many "European discoveries" built on African and Arabic foundations, and credit should flow to all contributors, not just the person who coined the English term.
+
+**Visual Connection:**
+Those distinctive logarithmic curves? Islamic mathematicians were mapping these relationships centuries before European textbooks. Mathematics truly knows no borders!
 """)
+
+# Add a section break
+st.markdown("---")
 
 # --- Chart 1: Logarithmic Power Bar ---
 st.subheader("How Far is 3 on the Log Scale?")

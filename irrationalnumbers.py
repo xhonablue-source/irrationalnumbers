@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 
 # --- MathCraft Header --- (MUST BE FIRST!)
 st.set_page_config(
@@ -8,13 +9,7 @@ st.set_page_config(
     page_icon="🔢"
 )
 
-# Check if matplotlib is available, if not provide alternative
-try:
-    import matplotlib.pyplot as plt
-    HAS_MATPLOTLIB = True
-except ImportError:
-    HAS_MATPLOTLIB = False
-    st.error("Matplotlib is not installed. Install it with: pip install matplotlib")
+# Using Streamlit's built-in charting - no matplotlib needed!
 
 st.markdown("""
 <div style="text-align: center; padding: 1rem; background: linear-gradient(90deg, #56CCF2, #2F80ED); border-radius: 10px;">
@@ -36,50 +31,40 @@ Example: `log₁₀(3) ≈ 0.477121...`
 Imagine slicing a birthday cake exactly at `log₁₀(3)`. No matter how you try, you'll never cut a clean piece—it's always just off! That's what irrational numbers are like in the real world.
 """)
 
-if HAS_MATPLOTLIB:
-    # --- Chart 1: Logarithmic Power Bar ---
-    st.subheader("How Far is 3 on the Log Scale?")
-    
-    fig, ax = plt.subplots(figsize=(10, 3))
-    ax.hlines(y=1, xmin=0, xmax=1, color='lightgray', linewidth=10)
-    ax.text(0, 1.1, '10⁰ = 1', ha='center', va='bottom', fontsize=12)
-    ax.text(1, 1.1, '10¹ = 10', ha='center', va='bottom', fontsize=12)
-    
-    log3 = np.log10(3)
-    ax.vlines(x=log3, ymin=0.95, ymax=1.05, color='red', linestyle='--', linewidth=2)
-    ax.text(log3, 1.15, 'log₁₀(3) ≈ 0.477', color='red', ha='center', fontsize=12)
-    ax.text(log3, 0.85, '≈ 47.7% of full power', color='red', ha='center', fontsize=10)
-    
-    ax.set_ylim(0.8, 1.3)
-    ax.set_xlim(-0.05, 1.05)
-    ax.axis('off')
-    st.pyplot(fig)
-    
-    # --- Chart 2: Cake Slicing Metaphor ---
-    st.subheader("The Cake That Wouldn't Slice Evenly 🎂")
-    
-    fig_story, ax_story = plt.subplots(figsize=(10, 2))
-    slices = np.linspace(0, 1, 12)
-    for s in slices:
-        ax_story.axvline(s, color='gray', linestyle='--', linewidth=0.5)
-    
-    ax_story.axvline(log3, color='red', linewidth=2, linestyle='--', label='log₁₀(3) slice')
-    ax_story.set_xticks([0, log3, 1])
-    ax_story.set_xticklabels(['Start of Cake', 'log₁₀(3)', 'End of Cake'])
-    ax_story.set_yticks([])
-    ax_story.legend(loc='upper right')
-    st.pyplot(fig_story)
-    
-else:
-    # Fallback content when matplotlib is not available
-    st.subheader("Mathematical Details")
-    log3 = np.log10(3)
-    st.write(f"**log₁₀(3) = {log3:.6f}**")
-    st.write(f"This means 3 is located at approximately {log3*100:.1f}% along the logarithmic scale from 1 to 10.")
-    
-    st.subheader("Visualization Alternative")
-    st.write("Install matplotlib to see the interactive charts!")
-    st.code("pip install matplotlib", language="bash")
+# --- Chart 1: Logarithmic Power Bar ---
+st.subheader("How Far is 3 on the Log Scale?")
+
+log3 = np.log10(3)
+
+# Create data for the logarithmic scale visualization
+
+# Show the position of log10(3) on the scale
+scale_data = pd.DataFrame({
+    'Position': ['10⁰ = 1', f'log₁₀(3) ≈ {log3:.3f}', '10¹ = 10'],
+    'Value': [0, log3, 1],
+    'Color': ['lightgray', 'red', 'lightgray']
+})
+
+st.write(f"**log₁₀(3) = {log3:.6f}**")
+st.write(f"This means 3 is located at approximately **{log3*100:.1f}%** along the logarithmic scale from 1 to 10.")
+
+# Simple bar chart showing the position
+chart_data = pd.DataFrame({
+    'Scale Position': [0, log3, 1],
+    'Label': ['Start (10⁰=1)', 'log₁₀(3)', 'End (10¹=10)']
+})
+
+st.bar_chart(chart_data.set_index('Label')['Scale Position'])
+
+# --- Chart 2: Cake Slicing Metaphor ---
+st.subheader("The Cake That Wouldn't Slice Evenly 🎂")
+
+st.write("Imagine trying to slice a cake at exactly the log₁₀(3) position:")
+
+# Create a progress bar to show the "slice" position
+st.write("**Cake Slice Position:**")
+st.progress(log3)
+st.write(f"The slice would be at {log3*100:.1f}% of the way through the cake - an irrational position that can never be cut perfectly!")
 
 # --- Additional Information ---
 st.subheader("🔍 More About Irrational Numbers")

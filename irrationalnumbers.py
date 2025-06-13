@@ -15,7 +15,7 @@ st.markdown("""
 <div style="text-align: center; padding: 1rem; background: linear-gradient(90deg, #56CCF2, #2F80ED); border-radius: 10px;">
     <h1 style="color: white; margin: 0; font-weight: bold;">🔢 MathCraft: Irrational Numbers</h1>
     <p style="color: #f0f0f0; margin: 0; font-style: italic;">The Cake That Wouldn't Slice Evenly!</p>
-    <p style="color: #d0e8ff; margin-top: 0.5rem; font-size: 0.9rem;">By Xavier Honablue</p>
+    <p style="color: #d0e8ff; margin-top: 0.5rem; font-size: 0.9rem;">By Xavier Honablue M.Ed.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -100,6 +100,6 @@ if number > 0:
 # --- Footer ---
 st.markdown("""
 <div style="text-align: center; font-size: 0.9rem; margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 5px;">
-    🧮 Built with MathCraft | Powered by Streamlit + Python | Concept and Design by Xavier Honablue
+    🧮 Built with MathCraft | Powered by Streamlit + Python | Concept and Design by Xavier Honablue M.Ed.
 </div>
 """, unsafe_allow_html=True)

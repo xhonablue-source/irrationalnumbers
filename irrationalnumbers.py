@@ -1,6 +1,13 @@
 import streamlit as st
 import numpy as np
 
+# --- MathCraft Header --- (MUST BE FIRST!)
+st.set_page_config(
+    page_title="MathCraft | Irrational Numbers 🍰",
+    layout="centered",
+    page_icon="🔢"
+)
+
 # Check if matplotlib is available, if not provide alternative
 try:
     import matplotlib.pyplot as plt
@@ -8,13 +15,6 @@ try:
 except ImportError:
     HAS_MATPLOTLIB = False
     st.error("Matplotlib is not installed. Install it with: pip install matplotlib")
-
-# --- MathCraft Header ---
-st.set_page_config(
-    page_title="MathCraft | Irrational Numbers 🍰",
-    layout="centered",
-    page_icon="🔢"
-)
 
 st.markdown("""
 <div style="text-align: center; padding: 1rem; background: linear-gradient(90deg, #56CCF2, #2F80ED); border-radius: 10px;">
